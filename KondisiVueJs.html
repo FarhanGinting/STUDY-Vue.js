@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar If - Else VueJs</title>
+</head>
+<body>
+    <div id="app">
+        <span v-if="tampil">
+            {{ message }}
+        </span>
+
+        </span>
+        <span v-else>
+            message tidak dapat ditampilkan
+        </span>
+
+        <div v-if="nilai > 8">
+            Predikat A
+        </div>
+        <div v-else-if="nilai <= 8 && nilai > 6">
+            Predikat B
+        </div>
+        <div v-else>
+            Predikat C
+        </div>
+    </div>
+
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data () {
+                return {
+                    message: 'hello world',
+                    tampil: false,
+                    nilai: 8,
+
+                }
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>
