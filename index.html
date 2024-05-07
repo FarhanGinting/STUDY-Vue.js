@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <title>Index</title>
+</head>
+<body>
+
+    <div id="app">
+        
+        <button @click="kurang()"> - </button>
+        {{ count }}
+        <button @click="tambah()"> + </button>
+    </div>
+
+    <!-- Menggunkan CDN -->
+    <!-- <script>
+        const { createApp } = Vue 
+
+        createApp({
+            data () {
+                return {
+                    message : 'Hello world'
+                }
+            }
+        }).mount('#app')
+    </script> -->
+
+    <!-- Menggunakan ES Module Build -->
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data () {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                tambah() {
+                    this.count++
+                },
+                kurang() {
+                    this.count--
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
