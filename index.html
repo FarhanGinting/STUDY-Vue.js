@@ -9,11 +9,20 @@
 <body>
 
     <div id="app">
-        
-        <button @click="kurang()"> - </button>
-        {{ count }}
-        <button @click="tambah()"> + </button>
+        <div>
+            {{ count }}
+        </div>
+        <div>
+            {{ message }}
+        </div>
+        <div v-text="message"></div>
+
+        <div v-text="message2">
+            ini random text
+        </div>
+        <div v-html="message3"></div>
     </div>
+    
 
     <!-- Menggunkan CDN -->
     <!-- <script>
@@ -35,7 +44,10 @@
         createApp({
             data () {
                 return {
-                    count: 0
+                    count: 0,
+                    message: 'hello world',
+                    message2: 'ini akan me-replace text',
+                    message3: '<strong> ini tulisan bold (v-html)<strong>',
                 }
             },
             methods: {
