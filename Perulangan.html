@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <title>Index</title>
+</head>
+<body>
+
+    <div id="app">
+        <ul v-for="(i, petunjuk) in fruits">
+            <li>{{ i }} {{ petunjuk }}
+                <button @click="hapus(petunjuk)">X</button>
+            </li>
+        </ul>
+
+        <ul v-for="(item, index) in footballPlayers">
+            <li>
+                {{ item.name }} - {{ item.posisition }} [{{ index }}]
+            </li>
+        </ul>
+    </div>
+    
+
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data () {
+                return {
+                    fruits: ['apple', 'orange', 'melon', 'lemon', 'papaya'],
+                    footballPlayers: [
+                    {name: 'messi', posisition: 'forward'},
+                    {name: 'ronaldo', posisition: 'forward'},
+                    {name: 'casilas', posisition: 'goal keeper'},
+                    {name: 'ramos', posisition: 'defender'},
+                    {name: 'kroos', posisition: 'mid fielder'},
+                    ],
+                }
+            },
+            methods: {
+                hapus(petunjuk){
+                    this.fruits.splice(petunjuk, 1)
+                },
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>
