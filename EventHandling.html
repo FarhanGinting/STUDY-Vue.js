@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <title>Index</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- <button @click="count--"> - </button> -->
+        <button @click="mengurangi"> - </button>
+        <span>{{ count }}</span>
+        <button v-on:click="menambah()"> + </button>
+        <!-- <button v-on:click="count++"> + </button> -->
+        <br>
+        <button @click="sayHello('Vue Js')">SayHello</button>
+        <br>
+        <!-- <input type="'text" v-on:keydown.enter="sayHello('Vue Js')">SayHello</input> -->
+        <input type="'text" @keydown.space="sayHello('Vue Js')">SayHello</input>
+        <br>
+        <form method="post" action="whatever.html", v-on:submit.prevent>
+            <input type="text">
+            <input type="sumbit" value="send">
+        </form>
+    </div>
+    
+
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data () {
+                return {
+                    count: 0,
+                }
+            },
+            methods: {
+                mengurangi(){
+                    this.count--
+                },
+                menambah(){
+                    this.count++
+                },
+                sayHello(whatever){
+                    alert('halo ' +whatever)
+                }
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>
