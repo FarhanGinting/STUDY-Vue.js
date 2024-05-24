@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <title>Index</title>
+</head>
+<body>
+        <div id="app"> <!-- Ini adalah rumah yang akan menerima furniture(data)  -->
+            
+        <!-- 1️⃣ v-text dan v-html (Untuk Mencetak) 
+                Contoh (1) : {{ contoh_1 }} 🟢
+                Contoh (2) : <div v-text="contoh_2"></div> 
+                Contoh (3) : <div v-html="contoh_3"></div> => 💡 Kelebihan dari v-html adalah "Mampu membaca "TAG" yang ada di dalam string" 💡
+        -->
+        
+        <!-- 2️⃣ [v-if, v-else, v-else-if] dan v-show (Untuk Sebuah Kondisi) 
+                📝 Perbedaan antara "v-if" dan "v-show" : 
+                        v-if jika kondisi tidak terpenuhi => nilai tersebut tidak dimuat, sedangkan
+                    💡  v-show apapun kondisinya => nilai sebenarnya sudah dimuat, namun disembunyikan atau tidak ditampilkan 💡
+
+                Contoh (1) : <div v-if="success == true">
+                                tulisan ini akan terlihat jika property success bernilai true
+                             </div>
+                            
+                Contoh (2) : <div v-if="nilai == 'A' ">         => Menggunakan "v-if"
+                                Nilai siswa ini adalah A
+                             </div>
+                            
+                             <div v-else-if="nilai == 'B' ">    => Menggunakan "v-else-if"
+                                Nilai siswa ini adalah B
+                             </div>
+                            
+                             <div v-else>                       => Menggunakan "v-else"
+                                Nilai siswa ini adalah C
+                             </div>
+
+                Contoh (3) :  <div v-show="success"> 
+                                tulisan ini akan terlihat jika property success bernilai true
+                             </div>
+        -->
+        
+        <!-- 3️⃣ v-for (Untuk Pengulanggan) 
+                Contoh (1) : <div v-for="Variabel in 10">
+                                {{ Variabel }}
+                             </div>
+
+                Contoh (2) : <ol>
+                                <li v-for="data in buah">
+                                    {{ data }}
+                                </li>
+                             </ol>
+        -->
+        
+        <!-- 4️⃣ event handling & methods (Untuk Menjalakan Aksi) 
+                Contoh (1) : <button v-on:click="Hello">
+                                ketik disini
+                             </button>
+                
+                Contoh (2) : <button @click="Hello">
+                                ketik disini
+                             </button>
+        -->
+
+        <!-- 5️⃣ attribute binding (Untuk menggambil nilai property pada vue js ke attribute (Hanya dapat membaca data)) 
+                Contoh (1) : <a :href="url"> => 📝 Jangan lupa menggunakan "Titik Dua" (:) sebelum href dan sejenisnya (scr)
+                                Ini Attribute Binding
+                             </a>
+        -->
+
+        <!-- 6️⃣ v-model / 2-way data binding (Untuk menggambil dan "menggubah" nilai property pada vue js ke attribute) 
+                Contoh (1) : <input type="text" v-model="inputan"> <br>
+                                isi dari inputan adalah {{ inputan }}
+        -->
+
+        <!-- 7️⃣ computed property (Untuk melakukan sebuah proses tanpa sebuah "Pemicu") 
+                Contoh (1) : <ol>
+                                <li v-for="data in buku">
+                                    {{ data }}
+                                </li>
+                             </ol>
+                             <div> Total Buku berjumlah : {{ Keseluruhan }}</div>
+                             <button @click="hapusBuku">Hapus Buku</button>
+        -->
+
+        <!-- 8️⃣ watchers (Untuk memantau aktifitas yang dilakukan) 
+                Contoh (1) : <input type="text" v-model="password">
+                             <input type="text" v-model="Ulangpassword">
+                             <div>
+                                {{ keterangan }}
+                             </div>
+        -->
+        
+        </div>
+
+    <script type="module">
+        // Install Vue JS dengan module (Non CLI)
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data () {
+                return {
+                    // Properties yang digunakan pada no 1️⃣
+                    contoh_1 : 'menggunakan kurung kurawal {}',
+                    contoh_2 : 'menggunakan v-text',
+                    contoh_3 : '<strong> menggunakan v-html </strong>',
+
+                     // Properties yang digunakan pada no 2️⃣
+                    success : true,
+                    nilai : 'A',
+
+                     // Properties yang digunakan pada no 3️⃣
+                    buah : ['mangga', 'apel', 'melon', 'durian', 'anggur'],
+
+                     // Properties yang digunakan pada no 5️⃣
+                    url: 'https://www.google.com',
+
+                    // Properties yang digunakan pada no 6️⃣
+                    inputan: 'Sebelum Di Input apapun',
+
+                    // Properties yang digunakan pada no 7️⃣
+                    buku: ['buku 1', 'buku 2', 'buku 3', 'buku 4', 'buku 5'],
+
+                    // Properties yang digunakan pada no 8️⃣
+                    password: '',
+                    Ulangpassword: '',
+                    keterangan: '',
+                }
+            },
+            methods: {
+                    // Method yang digunakan pada no 4️⃣
+                    Hello() {
+                        alert("Hello Hula !")
+                    },
+
+                    // Method yang digunakan pada no 7️⃣
+                    hapusBuku(){
+                        this.buku.splice(0, 1)
+                    }
+            },
+            computed: {
+                    // Computed yang digunakan pada no 7️⃣
+                    Keseluruhan(){
+                        return this.buku.length
+                    }
+            },
+            watch: {
+                    // watch yang digunakan pada no 8️⃣
+                    Ulangpassword(){
+                        if(this.password != this.Ulangpassword) {
+                            this.keterangan = 'password tidak sama'
+                        }
+                        else {
+                            this.keterangan = ''
+                        }
+                }
+            },
+        }).mount('#app') // Furniture(data) Yang akan digunakan di rumah (app)
+    </script>
+    
+</body>
+</html>
